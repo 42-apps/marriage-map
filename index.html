@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marriage Map — marriage, divorce &amp; family around the world</title>
+<meta name="description" content="An interactive globe that colours every country by a dimension of marriage — divorce rate, children per woman, marriage age, polygamy, marriage equality — beside a scrubbable history of marriage from the first written marriage law to today. Private, runs in your browser.">
+<link rel="icon" href="assets/icon.png">
+<meta property="og:title" content="Marriage Map">
+<meta property="og:description" content="Marriage, divorce &amp; family for every country on an interactive globe — plus the 5,000-year history of marriage.">
+<meta property="og:type" content="website">
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #ece3f2;
+    background: radial-gradient(1200px 820px at 72% -12%, #3a1f48 0%, #160f24 46%, #07050d 100%);
+    min-height: 100vh;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 40px 24px 100px; }
+  .top { display: flex; align-items: center; gap: 12px; margin: 0 0 44px; }
+  .logo { width: 46px; height: 46px; filter: drop-shadow(0 2px 6px rgba(0,0,0,.5)); }
+  .brandname { font-weight: 700; font-size: 17px; color: #f7eaf3; }
+  .eyebrow { letter-spacing: .16em; text-transform: uppercase; font-size: 12px; color: #d98fb6; margin: 0 0 10px; }
+  h1 { font-size: 42px; line-height: 1.12; margin: 0 0 16px; color: #fff; }
+  h1 .gold { color: #e7b94e; }
+  .lede { font-size: 19px; color: #d8c7e2; margin: 0 0 30px; max-width: 64ch; }
+  a { color: #ff9ec6; }
+  .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 8px; align-items: center; }
+  .cta {
+    display: inline-flex; align-items: center; gap: 9px;
+    background: linear-gradient(180deg, #ff8fbb, #e0568f);
+    color: #2a0a1a; text-decoration: none; font-weight: 700;
+    padding: 13px 24px; border-radius: 12px;
+    border: 1px solid rgba(255,255,255,.16);
+    box-shadow: 0 6px 24px rgba(224,86,143,.4);
+  }
+  .cta:hover { background: linear-gradient(180deg, #ffa6c9, #ff7eb0); }
+  .note { color: #b69ec6; font-size: 14px; margin: 14px 0 0; }
+  .hero { width: 100%; border-radius: 16px; margin: 38px 0 8px; border: 1px solid rgba(255,255,255,.1); box-shadow: 0 20px 60px rgba(0,0,0,.5); display: block; background: #140d20; }
+  .herocap { color: #b69ec6; font-size: 13px; text-align: center; margin: 10px 0 0; }
+  h2 { font-size: 22px; margin: 56px 0 16px; color: #fff; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
+  .card { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 14px; padding: 20px 22px; }
+  .card h3 { margin: 0 0 8px; font-size: 16px; color: #f3d7e6; display: flex; align-items: center; gap: 8px; }
+  .card p { margin: 0; color: #cdbdda; font-size: 15px; }
+  .sw { width: 11px; height: 11px; border-radius: 3px; flex: none; }
+  .data { color: #c7b6d6; font-size: 15px; max-width: 72ch; }
+  .privacy { margin-top: 28px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 14px; padding: 22px 24px; }
+  .privacy strong { color: #fff; }
+  footer { margin-top: 56px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.08); color: #b69ec6; font-size: 14px; }
+  footer a { color: #ff9ec6; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <img class="logo" src="assets/logo.svg" alt="">
+    <span class="brandname">Marriage Map</span>
+  </header>
+
+  <p class="eyebrow">Interactive globe &amp; timeline</p>
+  <h1>Marriage around the world — <span class="gold">divorce, family &amp; the history of marriage</span></h1>
+  <p class="lede">An interactive globe that colours every country by a dimension of marriage — <b>divorce rate</b>,
+  children per woman, age at first marriage, the legal floor on marriage age, <b>polygamy</b> and <b>marriage
+  equality</b> — beside a scrubbable <b>history of marriage</b> that runs from the first written marriage law in
+  ancient Sumer to no-fault divorce and marriage equality today.</p>
+
+  <div class="ctas">
+    <a class="cta" href="app/marriage.html">Launch the map →</a>
+  </div>
+  <p class="note">A free microsite · no accounts · collects no data · runs entirely in your browser</p>
+
+  <!-- hero: a perspective ramp above, a history timeline below -->
+  <svg class="hero" viewBox="0 0 900 300" role="img" aria-label="A world coloured by divorce rate, above a timeline of the history of marriage.">
+    <rect width="900" height="300" rx="16" fill="#140d20"/>
+    <text x="40" y="40" fill="#c69ec0" font-size="13" letter-spacing="2" style="text-transform:uppercase">One world, many perspectives</text>
+    <!-- divorce ramp -->
+    <defs>
+      <linearGradient id="ramp" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#2fa84f"/><stop offset="50%" stop-color="#e0c23a"/><stop offset="100%" stop-color="#c0392b"/>
+      </linearGradient>
+    </defs>
+    <rect x="40" y="58" width="820" height="22" rx="7" fill="url(#ramp)"/>
+    <text x="40" y="98" fill="#9fd9ad" font-size="12">low divorce</text>
+    <text x="860" y="98" fill="#e69a90" font-size="12" text-anchor="end">high divorce</text>
+    <!-- interlocking rings -->
+    <g transform="translate(450,150)" fill="none" stroke-width="7">
+      <circle cx="-13" cy="0" r="22" stroke="#e7b94e"/>
+      <circle cx="13" cy="0" r="22" stroke="#ff7eb0"/>
+    </g>
+    <!-- history timeline -->
+    <text x="40" y="214" fill="#e7b94e" font-size="13" font-weight="600">The history of marriage</text>
+    <line x1="40" y1="244" x2="860" y2="244" stroke="rgba(255,255,255,.16)"/>
+    <g stroke="rgba(8,6,16,.5)">
+      <circle cx="95"  cy="244" r="7" fill="#e7b94e"/>
+      <circle cx="200" cy="244" r="7" fill="#5a86d6"/>
+      <circle cx="320" cy="244" r="7" fill="#b07cd6"/>
+      <circle cx="450" cy="244" r="7" fill="#7cc6b0"/>
+      <circle cx="560" cy="244" r="7" fill="#e0a92f"/>
+      <circle cx="660" cy="244" r="7" fill="#d65a5a"/>
+      <circle cx="770" cy="244" r="7" fill="#7cc6b0"/>
+      <circle cx="845" cy="244" r="7" fill="#7cc6b0"/>
+    </g>
+    <text x="95"  y="276" fill="#cdbdda" font-size="11" text-anchor="middle">Sumerian law</text>
+    <text x="450" y="276" fill="#cdbdda" font-size="11" text-anchor="middle">civil marriage</text>
+    <text x="845" y="276" fill="#cdbdda" font-size="11" text-anchor="end">today</text>
+    <text x="40"  y="294" fill="#7c6b8f" font-size="11">3000 BCE</text>
+  </svg>
+  <p class="herocap">Recolour the world by any dimension of marriage, then travel through the history of marriage itself.</p>
+
+  <h2>What it does</h2>
+  <div class="grid">
+    <div class="card"><h3><span class="sw" style="background:#2fa84f"></span><span class="sw" style="background:#e0c23a"></span><span class="sw" style="background:#c0392b"></span>Ten perspectives, one world</h3><p>Recolour the globe by <b>divorce rate</b>, children per woman, share of adults married, marriage rate, age at first marriage, minimum legal age, child marriage, marriages per person, <b>polygamy</b> or <b>same-sex marriage</b> — the legend adapts to each.</p></div>
+    <div class="card"><h3>Every country, profiled</h3><p>Click any of <b>223 countries &amp; territories</b> for its full marriage profile — every metric at once — plus a live ranked list of the highest and lowest on the metric you're viewing.</p></div>
+    <div class="card"><h3>The history of marriage</h3><p><b>152 milestones</b>, 3000 BCE → today: the first written marriage law, dowry and bride-price, civil marriage, women's property rights, no-fault divorce, the end of child marriage, and marriage equality. Click one to see where it first happened.</p></div>
+    <div class="card"><h3>Marriage age &amp; child marriage</h3><p>See where the <b>legal floor</b> on marriage sits around the world — and where child marriage still persists, from a colour-coded map and a ranked list.</p></div>
+    <div class="card"><h3>Global trends</h3><p>Watch fertility, age at first marriage and divorce <b>shift over time</b> in a global-trends chart — the long arc behind the snapshot on the map.</p></div>
+    <div class="card"><h3>Globe, flat map, search &amp; share</h3><p>Spin a 3D globe or switch to a flat map, search any country to fly to it, and copy a link to an exact view — a perspective, a country, a milestone — to share what you found.</p></div>
+  </div>
+
+  <h2>About the data</h2>
+  <p class="data">Figures are the latest reliable estimates from <b>UN DESA</b> (World Marriage Data), the
+  <b>OECD Family Database</b>, the <b>World Bank</b>, <b>Pew Research</b>, <b>Our World in Data</b>, <b>Eurostat</b>
+  and national statistical offices. Definitions vary between countries — divorce rates in particular are measured
+  several different ways — so treat cross-country comparisons as <b>indicative</b>, not exact. Legal status of
+  polygamy and same-sex marriage reflects national law (local or religious exceptions exist). Country outlines:
+  Natural Earth (public domain). Globe: globe.gl.</p>
+
+  <div class="privacy">
+    <strong>Privacy:</strong> Marriage Map collects nothing, sends nothing, and makes no network requests. It
+    requests no browser permissions and works fully offline. Read the full <a href="privacy.html">privacy policy</a>.
+  </div>
+
+  <footer>
+    A <a href="https://42-apps.github.io/">42-apps</a> mini-site. &nbsp;·&nbsp; Data: UN DESA World Marriage Data ·
+    OECD Family Database · World Bank · Pew Research · Our World in Data · Eurostat. Borders: Natural Earth. Globe: globe.gl.
+  </footer>
+</div>
+</body>
+</html>
