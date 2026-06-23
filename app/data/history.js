@@ -27,7 +27,7 @@ window.METRICS = {
   ageFirst:     { field: 'medianAgeFirstMarriageFemale', label: 'Age at first marriage (women)', short: 'Age at marriage', unit: ' yrs', kind: 'purple', domain: [18, 34], fmt: 'dec1', desc: 'Median age at which women first marry' },
   minAge:       { field: 'minAgeFemale', label: 'Min. legal age (women)', short: 'Min. age', unit: ' yrs', kind: 'age', domain: [14, 21], fmt: 'int', good: 'high', desc: 'General minimum legal marriage age for women (no exceptions)' },
   childMarriage:{ field: 'childMarriagePct', label: 'Married before 18', short: 'Child marriage', unit: '%', kind: 'gyr', domain: [0, 40], fmt: 'pct0', good: 'low', desc: '% of women married before age 18' },
-  avgMarriages: { field: 'avgMarriages', label: 'Marriages per person', short: 'Avg. marriages', unit: '', kind: 'warm', domain: [1, 2], fmt: 'dec1', desc: 'Average lifetime number of marriages' },
+  avgMarriages: { field: 'avgMarriages', label: 'Marriages per person', short: 'Avg. marriages', unit: '', kind: 'warm', domain: [1, 2], fmt: 'dec1', desc: 'Avg. lifetime marriages per person — few countries report this, so most values are estimated from divorce & remarriage data' },
   polygamy:     { field: 'polygamy', label: 'Polygamy', short: 'Polygamy', kind: 'cat', desc: 'Legal status of polygamous marriage',
     cats: { banned: { label: 'Banned', color: '#2fa84f' }, partial: { label: 'Some groups / regions', color: '#e0a92f' }, legal: { label: 'Legal', color: '#c0392b' } } },
   sameSex:      { field: 'sameSexMarriage', label: 'Same-sex marriage', short: 'Same-sex', kind: 'cat', desc: 'Legal recognition of same-sex marriage',
